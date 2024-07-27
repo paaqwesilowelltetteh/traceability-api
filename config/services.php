@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'token_name' => env('TOKEN_NAME', 'traceabity_token'),
+
 ];
