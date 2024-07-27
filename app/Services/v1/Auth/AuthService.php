@@ -17,11 +17,6 @@ class AuthService
         //
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function registerUser(Request $request): JsonResponse
     {
         $user = User::create([
