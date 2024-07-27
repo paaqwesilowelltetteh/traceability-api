@@ -21,6 +21,8 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
         Route::post('/logout', 'logout');
         Route::post('/email/verification-notification','emailVerificationNotification')->middleware(['throttle:6,1']);
         // Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['signed', 'throttle:6,1']);
+        Route::post('forgot-password', 'forgot_password');
+        Route::post('/password-reset', 'password_reset');
     });
     
 });
@@ -28,9 +30,9 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
     ->name('password.email');
 
-Route::post('/reset-password', [NewPasswordController::class, 'store'])
-    ->middleware('guest')
-    ->name('password.store');
+// Route::post('/reset-password', [NewPasswordController::class, 'store'])
+//     ->middleware('guest')
+//     ->name('password.store');
 
 //Auth routes that require authentication
 Route::group(['middleware' => 'auth:sanctum'], function () {
